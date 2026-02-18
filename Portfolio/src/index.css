@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+body{
+    font: "poopins", sans-serif;
+}
+
+h1 , h2 {
+    font: "Roboto" , sans-serif;
+}
