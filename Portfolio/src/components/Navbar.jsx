@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import OverlayMenu from "./OverlayMenu"
 import Logo from "../assets/Logo.png"
 import { FiMenu } from "react-icons/fi";
@@ -7,6 +7,55 @@ const Navbar = () => {
 
   const [menuOpen, setmenuOpen] = useState(false);
   const [visible, setvisible] = useState(true);
+  const [forVisible, setforVisible] = useState();
+
+  const lastScrollY = useRef(0);
+  const timerId = useRef(null);
+
+  useEffect(() => {
+    const homeSection = document.querySelector("#home");
+    const observer = new IntersectionObserver(
+      ([entry]) =>{
+        if(entry.isIntersecting){
+          setforVisible(true);
+          setvisible(true);
+        }else{
+          setforVisible(false)
+        }
+      }, {threshold : 0.1}
+    )
+    if(homeSection) observer.observe(homeSection);
+    return() =>{
+      if(homeSection) observer.unobserve(homeSection);
+    }
+  }, [])
+
+
+  useEffect(() =>{
+    const handleScroll = () =>{
+      if(forceVisbls){
+        setforVisible(true);
+        return
+      }
+      const currentScrollY =window.scrollY;
+      if(currentScrollY > lastScrollY.current){
+        setvisible(false)
+      }else{
+        setvisible(true);
+        if(timerId.current) clearTimeout(timerId.current);
+        timerId.current = setTimeout(() =>{
+          setvisible(false);
+        }, 3000)
+      }
+      lastScrollY.current = currentScrollY;
+    }
+    window.addEventListener("scroll" , handleScroll , {passive:true})
+
+    return () =>{
+      window.removeEventListener("scroll", handleScroll)
+      if(timerId.current) clearTimeout(timerId.current);
+    }
+  }, [forVisible])
 
   return (
     <div >
@@ -40,7 +89,9 @@ const Navbar = () => {
 
       </nav>
 
-      <OverlayMenu></OverlayMenu>
+      <OverlayMenu isOpen = {menuOpen} onClose={() => setmenuOpen(false)}>
+
+      </OverlayMenu>
     </div>
   )
 }
