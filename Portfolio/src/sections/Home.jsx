@@ -94,8 +94,23 @@ const Home = () => {
           animate={{opacity:1 , y:0}}
           transition={{delay:0.4 , duration:0.8}}
           >
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit, dolor quos! Sapiente, sint?
+            I turn Complex into semless, high-impact web experiences - building mordern, scalable and lightning-fast application that make a difference.
           </motion.p>
+
+          <motion.div className='mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6'
+          initial={{opacity:0}}
+          animate={{opacity:1}}
+          transition={{delay:0.8, duration:0.8}}
+          >
+            <a href="#projects"
+            className='px-6 py-3 rounded-full font-medium text-lg text-white
+            bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2]
+            shadow-lg hover:scale-105 transition-all'
+            
+            >View My Work</a>
+            <a href="">My Resume</a>
+
+          </motion.div>
 
         </div>
       </div>

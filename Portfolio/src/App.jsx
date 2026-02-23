@@ -1,6 +1,5 @@
 import Navbar from "./components/Navbar"
 import CoustomCursor from "./components/CoustomCursor"
-// import ParticalesBackground from "./components/ParticalesBackground"
 import Home from "./sections/Home"
 import About from "./sections/About"
 import Skills from './sections/Skills'
@@ -14,7 +13,6 @@ export default function App(){
   return(
     <div className="relative gradient text-white">
       <CoustomCursor></CoustomCursor>
-      {/* <ParticalesBackground></ParticalesBackground> */}
        <Navbar></Navbar>
        <Home></Home>
        <About></About>
@@ -24,8 +22,6 @@ export default function App(){
        <Testmonials></Testmonials>
        <Contact></Contact>
        <Footer></Footer>
-
-       keuch bhi
     </div>
   )
 }
