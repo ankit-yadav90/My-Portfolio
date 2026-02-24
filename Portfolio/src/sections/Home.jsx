@@ -1,10 +1,18 @@
 import React, { useMemo, useState ,} from 'react'
 import ParticalesBackground from "../components/ParticalesBackground"
 import { motion } from "framer-motion"
+import { FaTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa"
+
+
+const socials = [
+  {icon : FaTwitter , link:"https://twitter.com/ankityadav_"},
+  {icon : FaLinkedinIn , link:"https://www.linkedin.com/in/ankityadav/"},
+  {icon : FaGithub , link:"https://github.com/ankityadav123"}
+]
 
 const Home = () => {
 
-  const roels = useMemo(() => ["Web Devloper" , "Software Devloper" ,], [])
+  const roels = useMemo(() => ["Web Developer", "Software Developer"], [])
 
   const [index, setIndex] = React.useState(0);
   const [subIndex, setSubIndex] = React.useState(0);
@@ -35,9 +43,9 @@ const Home = () => {
       h-[70vw] sm:h-[50vw] md:h-[40vw]
       max-w-[500px] max-h-[500px]
       rounded-full
-      bg-gradient-to-r from=[#302b63] via-[#00bf8f] to-[#1cd8d2]
+      bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2]
       opacity-30 sm:opacity-20 md:opacity-10
-      blur-[100px] sm-blue-[130px] md:blue-[150px]
+      blur-[100px] sm:blur-[130px] md:blur-[150px]
       animate-pulse
     '
     >  </div>
@@ -49,7 +57,7 @@ const Home = () => {
       rounded-full
       bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2]
       opacity-30 sm:opacity-20 md:opacity-10
-      blur-[100px] sm-blue:[130px] md:blue-[150px]
+      blur-[100px] sm:blur:[130px] md:blur-[150px]
       animate-pulse delay-500
     '></div>
 
@@ -57,11 +65,11 @@ const Home = () => {
     </div>
 
 
-    <div className='relative z-10 h-full w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2'>
+    <div className='relative z-10 h-full w-full max-w-7xl max-auto px-4 grid grid-cols-1 lg:grid-cols-2'>
       <div className='flex flex-col justify-center h-full text-center lg:text-left relative'>
-        <div className='w-full lg:pr-24 max:auto max-w-[48rem]'>
+        <div className='w-full lg:pr-24 max-auto max-w-[48rem]'>
 
-          <motion.div className='mb-3 text-xl sm-text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-wide min-h-[1.6em]'
+          <motion.div className='mb-3 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-wide min-h-[1.6em]'
           initial={{opacity:0 , y:12}}
           animate={{opacity:1 , y:0}}
           transition={{duration:0.6}}
@@ -94,7 +102,7 @@ const Home = () => {
           animate={{opacity:1 , y:0}}
           transition={{delay:0.4 , duration:0.8}}
           >
-            I turn Complex into semless, high-impact web experiences - building mordern, scalable and lightning-fast application that make a difference.
+            I turn complex ideas into seamless, high-impact web experiences — building modern, scalable and lightning-fast applications that make a difference.
           </motion.p>
 
           <motion.div className='mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6'
@@ -108,9 +116,16 @@ const Home = () => {
             shadow-lg hover:scale-105 transition-all'
             
             >View My Work</a>
-            <a href="">My Resume</a>
+            <a href="/resume.pdf"
+            download
+            className='px-6 py-3 rounded-full text-lg font-medium text-black bg-white hover:bg-amber-200 shadow-lg hover:scale-105 transition-all'
+            >My Resume</a>
 
           </motion.div>
+
+          <section>
+            {}
+          </section>
 
         </div>
       </div>
