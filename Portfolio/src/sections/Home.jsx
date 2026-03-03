@@ -1,14 +1,27 @@
 import React, { useMemo, useState ,} from 'react'
 import ParticalesBackground from "../components/ParticalesBackground"
-import { motion } from "framer-motion"
-import { FaTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa"
+import { hover, motion, scale } from "framer-motion"
+import { FaTwitter, FaLinkedinIn, FaGithub, FaInstagram } from "react-icons/fa"
+import avator from "../assets/avator.png"
+
 
 
 const socials = [
-  {icon : FaTwitter , link:"https://twitter.com/ankityadav_"},
-  {icon : FaLinkedinIn , link:"https://www.linkedin.com/in/ankityadav/"},
-  {icon : FaGithub , link:"https://github.com/ankityadav123"}
+  {Icon : FaInstagram , label:"Instagram", link:"https://www.instagram.com/ankityadav123/"},
+  {Icon : FaTwitter , label:"X", link:"https://x.com/ankityadav123"},
+  {Icon : FaLinkedinIn ,label: "LinkedIn", link:"https://www.linkedin.com/in/ankityadav/"},
+  {Icon : FaGithub , label:"GitHub", link:"https://github.com/ankityadav123"}
 ]
+
+const glowVariants = {
+  initial: { scale: 1, y:0 , filter: "drop-shadow(0 0 0 rgba(0, 0, 0, 0))" },
+  hover: {
+    scale:1.2 , y:3,
+    filter: "drop-shadow(0 0 8px rgba(13, 88, 204, 0.9)) drop-shadow(0 0 18px rgba(16, 185, 129, 0.8))",
+    transition: { type: "spring", stiffness: 300, damping: 15 }
+  },
+  tap: {scale: 0.95 , y:0 , transition:{duration:0.08}}
+}
 
 const Home = () => {
 
@@ -123,12 +136,46 @@ const Home = () => {
 
           </motion.div>
 
-          <section>
-            {}
-          </section>
+          <div className='mt-10 flex gap-5 text-2xl md:text-3xl justify-center lg:justify-start'>
+            {socials.map(({Icon , label , link}) => (
+              <motion.a 
+              
+              href={link}
+              key={label}
+              target='blank'
+              aria-label={label}
+              rel='noopener noreferrer'
+              variants={glowVariants}
+              initial="initial"
+              whileHover="hover"
+              whileTap="tap"
+              className='text-gray-300 '
+              
+              >
+                <Icon></Icon>
+              </motion.a>
+            ))}
+
+          </div>
 
         </div>
       </div>
+
+    <div className='relative hidden lg:block'>
+
+        <motion.img src={avator} alt="Ankit yadav" 
+         className='absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none'
+        style={{
+          right : "-30px", width : "min(45vw , 780px" , maxHeight : "90vh"
+        }}
+          initial={{opacity:0 , y:40 , scale:0.9}}
+          animate={{opacity:1 , y:0 , scale:1}}
+          transition={{delay:0.2 , duration:0.8}}
+        
+        />
+
+    </div>
+
     </div>
 
     </section>
